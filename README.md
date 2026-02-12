@@ -17,7 +17,6 @@ Terraform more CLI-friendly:
 - removes unnecessary output
 - adds own colored progress indicator
 - provides an extra compact mode
-- allows to use of multiple arguments when original command doesn't support it
 - adds automatically quotes for indexed resources (`xargs` friendly)
 - generates a log file when `TF_OUTPUT_PATH` environment variable is used
 
@@ -129,10 +128,6 @@ messages about progress and shows single dot or character for each line,
 to original messages (default if `TF_IN_AUTOMATION=1`), `-no-outputs` hides
 outputs (default, `-no-outputs=false` shows it again).
 
-The command accepts the resource name as an argument without `-target=`
-option. If the argument misses quotes inside square brackets then they will
-be added.
-
 The command will log to the file named in `TF_OUTPUT_PATH` environment
 variable. The file name is resolved with `strftime`'s `%` sequences.
 
@@ -153,16 +148,13 @@ it will hide a plan for data sources (`data.xxx will be read during apply`
 blocks) from the `-short` and `-compact` mode output.
 
 Additional options can be used: `-counters` shows counters with processed
-resources, `-compact` skips the content of the resources, `-`short`removes
-unnecessary lines (default),`-full`keeps original manifest,`-fan`hides
-messages about progress and shows short indicator (default),`-dots`hides
-messages about progress and shows single dot or character for each line,`-verbatim`keeps original messages about progress,`-verbose`adds counters
-to original messages (default if`TF_IN_AUTOMATION=1`), `-no-outputs`hides
-outputs (default,`-no-outputs=false` shows it again).
-
-The command accepts the resource name as an argument without `-target=`
-option. If the argument misses quotes inside square brackets then they will
-be added.
+resources, `-compact` skips the content of the resources, `-short` removes
+unnecessary lines (default), `-full` keeps original manifest, `-fan` hides
+messages about progress and shows short indicator (default), `-dots` hides
+messages about progress and shows single dot or character for each line,
+`-verbatim` keeps original messages about progress, `-verbose` adds counters
+to original messages (default if `TF_IN_AUTOMATION=1`), `-no-outputs` hides
+outputs (default, `-no-outputs=false` shows it again).
 
 The command will log to the file named in `TF_OUTPUT_PATH` environment
 variable. The file name is resolved with `strftime`'s `%` sequences.
@@ -227,10 +219,6 @@ messages about progress and shows single dot or character for each line,
 `-verbatim` keeps original messages about progress, `-verbose` adds counters
 to original messages (default if `TF_IN_AUTOMATION=1`).
 
-The command accepts the resource name as an argument without `-target=`
-option. If the argument misses quotes inside square brackets then they will
-be added.
-
 The command will log to the file named in `TF_OUTPUT_PATH` environment
 variable. The file name is resolved with `strftime`'s `%` sequences.
 
@@ -251,9 +239,6 @@ messages about progress and shows single dot or character for each line,
 `-verbatim` keeps original messages about progress, `-verbose` adds counters
 to original messages (default if `TF_IN_AUTOMATION=1`), `-no-outputs` hides
 outputs (default, `-no-outputs=false` shows it again).
-
-The command accepts resource name as an argument without `-target=` option.
-If the argument misses quotes inside square brackets then they will be added.
 
 The command will log to the file named in `TF_OUTPUT_PATH` environment
 variable. The file name is resolved with `strftime`'s `%` sequences.
