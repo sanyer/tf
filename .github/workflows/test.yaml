@@ -48,5 +48,20 @@ jobs:
           version: 2.12.5 # datasource=github-releases depName=goreleaser/goreleaser
           args: build --clean --snapshot --single-target --output tf
 
+      - name: Debug environment
+        run: |
+          echo "=== Workspace root ==="
+          pwd
+          ls -la
+          echo "=== tf binary ==="
+          if [ -x ./tf ]; then ./tf version || true; else ls -la ./tf || true; fi
+          echo "=== terraform ==="
+          which terraform || true
+          terraform version || true
+          echo "=== OpenTofu / tofu ==="
+          which opentofu || which tofu || true
+          (opentofu version || tofu version) 2>/dev/null || true
+          echo "=== end debug ==="
+
       - name: Run tests
         run: make test
