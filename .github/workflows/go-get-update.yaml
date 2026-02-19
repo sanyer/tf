@@ -64,7 +64,7 @@ jobs:
           default_author: github_actions
           message: Automated go get update
           new_branch: automated/go-get-update
-          fetch: false
+          fetch: true
           push: origin automated/go-get-update --set-upstream --force
 
       - name: Create pull request
